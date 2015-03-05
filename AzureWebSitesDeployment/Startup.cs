@@ -1,8 +1,10 @@
-﻿using Microsoft.Owin.Security.Google;
+﻿using AzureWebSitesDeployment.Config;
+using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OpenIdConnect;
 using Owin;
 using Thinktecture.IdentityServer.Core.Configuration;
 using Thinktecture.IdentityServer.Core.Logging;
+using Thinktecture.IdentityServer.Core.Services;
 
 namespace AzureWebSitesDeployment
 {
@@ -12,14 +14,13 @@ namespace AzureWebSitesDeployment
         {
             LogProvider.SetCurrentLogProvider(new DiagnosticsTraceLogProvider());
 
-            // uncomment to enable HSTS headers for the host
-            // see: https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security
-            //app.UseHsts();
-
             var factory = InMemoryFactory.Create(
                 users:   Users.Get(),
                 clients: Clients.Get(),
                 scopes:  Scopes.Get());
+
+            // turns off redirect URI validaiton - ONLY FOR DEMO PURPOSES
+            factory.RedirectUriValidator = new Registration<IRedirectUriValidator, NopRedirectUriValidator>();
 
             var idsrvOptions = new IdentityServerOptions
             {

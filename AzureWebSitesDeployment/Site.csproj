@@ -125,6 +125,7 @@
   <ItemGroup>
     <Compile Include="Config\Cert.cs" />
     <Compile Include="Config\Clients.cs" />
+    <Compile Include="Config\NopRedirectUriValidator.cs" />
     <Compile Include="Config\Scopes.cs" />
     <Compile Include="Config\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
