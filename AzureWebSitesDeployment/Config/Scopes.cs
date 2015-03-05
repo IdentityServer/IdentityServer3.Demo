@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 using System.Collections.Generic;
-using Thinktecture.IdentityServer.Core;
 using Thinktecture.IdentityServer.Core.Models;
 
 namespace AzureWebSitesDeployment
@@ -23,15 +22,17 @@ namespace AzureWebSitesDeployment
     {
         public static IEnumerable<Scope> Get()
         {
-            return new[]
-                {
-                    StandardScopes.OpenId,
-                    StandardScopes.Profile,
-                    StandardScopes.Email,
-                    StandardScopes.Address,
-                    StandardScopes.Phone,
-                    StandardScopes.OfflineAccess,
-                };
+            var scopes = new List<Scope>
+            {
+                StandardScopes.OpenId,
+                StandardScopes.Profile,
+                StandardScopes.Email,
+                StandardScopes.Address,
+                StandardScopes.Phone,
+                StandardScopes.OfflineAccess,
+            };
+
+            return scopes;
         }
     }
 }

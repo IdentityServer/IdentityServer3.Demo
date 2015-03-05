@@ -1,5 +1,4 @@
-﻿using Microsoft.Owin;
-using Microsoft.Owin.Security.Google;
+﻿using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OpenIdConnect;
 using Owin;
 using Thinktecture.IdentityServer.Core.Configuration;
