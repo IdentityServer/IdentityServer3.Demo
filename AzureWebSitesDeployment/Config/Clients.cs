@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using Thinktecture.IdentityServer.Core.Models;
+﻿using IdentityServer3.Core.Models;
+using System.Collections.Generic;
+
 
 namespace AzureWebSitesDeployment.Config
 {
@@ -15,9 +16,9 @@ namespace AzureWebSitesDeployment.Config
                     Enabled = true,
 
                     ClientId = "code",
-                    ClientSecrets = new List<ClientSecret>
+                    ClientSecrets = new List<Secret>
                     {
-                        new ClientSecret("secret".Sha256())
+                        new Secret("secret".Sha256())
                     },
 
                     Flow = Flows.AuthorizationCode,
@@ -34,9 +35,9 @@ namespace AzureWebSitesDeployment.Config
                     Enabled = true,
 
                     ClientId = "implicit",
-                    ClientSecrets = new List<ClientSecret>
+                    ClientSecrets = new List<Secret>
                     {
-                        new ClientSecret("secret".Sha256())
+                        new Secret("secret".Sha256())
                     },
 
                     Flow = Flows.Implicit,
@@ -53,9 +54,9 @@ namespace AzureWebSitesDeployment.Config
                     Enabled = true,
 
                     ClientId = "hybrid",
-                    ClientSecrets = new List<ClientSecret>
+                    ClientSecrets = new List<Secret>
                     {
-                        new ClientSecret("secret".Sha256())
+                        new Secret("secret".Sha256())
                     },
 
                     Flow = Flows.Hybrid,
