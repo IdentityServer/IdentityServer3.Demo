@@ -27,7 +27,9 @@ namespace AzureWebSitesDeployment.Config
                     RedirectUris = new List<string>
                     {
                         "https://someUri",
-                    }
+                    },
+
+                    AllowAccessToAllScopes = true
                 },
                 new Client
                 {
@@ -46,7 +48,9 @@ namespace AzureWebSitesDeployment.Config
                     RedirectUris = new List<string>
                     {
                         "https://someUri",
-                    }
+                    },
+
+                    AllowAccessToAllScopes = true
                 },
                 new Client
                 {
@@ -65,7 +69,9 @@ namespace AzureWebSitesDeployment.Config
                     RedirectUris = new List<string>
                     {
                         "https://someUri",
-                    }
+                    },
+
+                    AllowAccessToAllScopes = true
                 }
             };
         }
