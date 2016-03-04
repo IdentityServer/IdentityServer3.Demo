@@ -2,6 +2,7 @@
 using Owin;
 using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Services;
+using Serilog;
 
 namespace AzureWebSitesDeployment
 {
@@ -9,6 +10,11 @@ namespace AzureWebSitesDeployment
     {
         public void Configuration(IAppBuilder app)
         {
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Trace()
+                .CreateLogger();
+
             var factory = new IdentityServerServiceFactory()
                 .UseInMemoryClients(Clients.Get())
                 .UseInMemoryScopes(Scopes.Get())

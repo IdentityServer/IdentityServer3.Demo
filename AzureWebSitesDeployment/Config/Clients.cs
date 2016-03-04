@@ -12,39 +12,29 @@ namespace AzureWebSitesDeployment.Config
             {
                 new Client
                 {
-                    ClientName = "Test Client Code Flow",
-                    Enabled = true,
+                    ClientName = "Native Client",
+                    ClientId = "native",
 
-                    ClientId = "code",
-                    ClientSecrets = new List<Secret>
-                    {
-                        new Secret("secret".Sha256())
-                    },
-
-                    Flow = Flows.AuthorizationCode,
-                    AllowClientCredentialsOnly = true,
-
+                    Flow = Flows.HybridWithProofKey,
                     RedirectUris = new List<string>
                     {
                         "https://someUri",
                     },
 
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret("secret".Sha256())
+                    },
+
                     AllowAccessToAllScopes = true
                 },
+
                 new Client
                 {
-                    ClientName = "Test Client Implicit Flow",
-                    Enabled = true,
-
+                    ClientName = "Implicit Flow Client",
                     ClientId = "implicit",
-                    ClientSecrets = new List<Secret>
-                    {
-                        new Secret("secret".Sha256())
-                    },
-
+                    
                     Flow = Flows.Implicit,
-                    AllowClientCredentialsOnly = true,
-
                     RedirectUris = new List<string>
                     {
                         "https://someUri",
@@ -52,27 +42,6 @@ namespace AzureWebSitesDeployment.Config
 
                     AllowAccessToAllScopes = true
                 },
-                new Client
-                {
-                    ClientName = "Test Client Hybrid Flow",
-                    Enabled = true,
-
-                    ClientId = "hybrid",
-                    ClientSecrets = new List<Secret>
-                    {
-                        new Secret("secret".Sha256())
-                    },
-
-                    Flow = Flows.Hybrid,
-                    AllowClientCredentialsOnly = true,
-
-                    RedirectUris = new List<string>
-                    {
-                        "https://someUri",
-                    },
-
-                    AllowAccessToAllScopes = true
-                }
             };
         }
     }
