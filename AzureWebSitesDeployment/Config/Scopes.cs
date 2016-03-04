@@ -15,6 +15,13 @@ namespace AzureWebSitesDeployment.Config
                 StandardScopes.Address,
                 StandardScopes.Phone,
                 StandardScopes.OfflineAccess,
+
+                new Scope
+                {
+                    Name = "api",
+                    DisplayName = "API",
+                    Type = ScopeType.Resource
+                }
             };
 
             return scopes;
