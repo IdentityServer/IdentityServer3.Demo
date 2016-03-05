@@ -3,6 +3,9 @@ using Owin;
 using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Services;
 using Serilog;
+using System.Web.Http;
+using System.Web.Http.Dispatcher;
+using AzureWebSitesDeployment.Api;
 
 namespace AzureWebSitesDeployment
 {
@@ -14,6 +17,17 @@ namespace AzureWebSitesDeployment
                 .MinimumLevel.Debug()
                 .WriteTo.Trace()
                 .CreateLogger();
+
+            app.Map("/api", apiApp =>
+            {
+                var config = new HttpConfiguration();
+                config.Services.Replace(typeof(IHttpControllerTypeResolver), 
+                    new TypeResolver(typeof(IdentityController)));
+                config.MapHttpAttributeRoutes();
+
+                apiApp.UseWebApi(config);
+            });
+
 
             var factory = new IdentityServerServiceFactory()
                 .UseInMemoryClients(Clients.Get())
