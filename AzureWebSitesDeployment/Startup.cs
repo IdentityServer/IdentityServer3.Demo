@@ -21,8 +21,8 @@ namespace AzureWebSitesDeployment
             app.Map("/api", apiApp =>
             {
                 var config = new HttpConfiguration();
-                //config.Services.Replace(typeof(IHttpControllerTypeResolver), 
-                //    new TypeResolver(typeof(IdentityController)));
+                config.Services.Replace(typeof(IHttpControllerTypeResolver),
+                    new TypeResolver(typeof(IdentityController)));
                 config.MapHttpAttributeRoutes();
 
                 apiApp.UseWebApi(config);

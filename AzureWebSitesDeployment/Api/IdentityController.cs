@@ -11,7 +11,7 @@ namespace AzureWebSitesDeployment.Api
         {
             var caller = User as ClaimsPrincipal;
 
-            if (caller.Identity.IsAuthenticated)
+            if (caller != null && caller.Identity != null && caller.Identity.IsAuthenticated)
             {
                 return Json(from c in caller.Claims select new { c.Type, c.Value });
             }
