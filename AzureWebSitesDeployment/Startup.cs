@@ -6,6 +6,7 @@ using Serilog;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
 using AzureWebSitesDeployment.Api;
+using IdentityServer3.AccessTokenValidation;
 
 namespace AzureWebSitesDeployment
 {
@@ -24,6 +25,14 @@ namespace AzureWebSitesDeployment
                 config.Services.Replace(typeof(IHttpControllerTypeResolver),
                     new TypeResolver(typeof(IdentityController)));
                 config.MapHttpAttributeRoutes();
+
+                app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
+                {
+                    Authority = "https://demo.identityserver.io",
+                    RequiredScopes = new[] { "api" },
+
+                    DelayLoadMetadata = true
+                });
 
                 apiApp.UseWebApi(config);
             });
