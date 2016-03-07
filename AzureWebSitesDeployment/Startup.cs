@@ -7,6 +7,8 @@ using System.Web.Http;
 using System.Web.Http.Dispatcher;
 using AzureWebSitesDeployment.Api;
 using IdentityServer3.AccessTokenValidation;
+using System;
+using Microsoft.Owin.Security.Google;
 
 namespace AzureWebSitesDeployment
 {
@@ -51,9 +53,26 @@ namespace AzureWebSitesDeployment
                 SiteName = "IdentityServer3 Demo",
                 Factory = factory,
                 SigningCertificate = Cert.Load(),
+
+                AuthenticationOptions = new AuthenticationOptions
+                {
+                    IdentityProviders = ConfigureIdentityProviders
+                }
             };
 
             app.UseIdentityServer(idsrvOptions);            
+        }
+
+        private void ConfigureIdentityProviders(IAppBuilder app, string signInAsType)
+        {
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
+            {
+                AuthenticationType = "Google",
+                SignInAsAuthenticationType = signInAsType,
+
+                ClientId = "708996912208-9m4dkjb5hscn7cjrn5u0r4tbgkbj1fko.apps.googleusercontent.com",
+                ClientSecret = "wdfPY6t8H8cecgjlxud__4Gh"
+            });
         }
     }
 }
