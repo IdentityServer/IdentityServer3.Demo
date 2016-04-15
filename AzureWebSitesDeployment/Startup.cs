@@ -30,6 +30,7 @@ namespace AzureWebSitesDeployment
                 app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
                 {
                     Authority = "https://demo.identityserver.io",
+                    ValidationMode = ValidationMode.ValidationEndpoint,
                     RequiredScopes = new[] { "api" },
 
                     DelayLoadMetadata = true
