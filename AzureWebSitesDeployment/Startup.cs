@@ -28,28 +28,13 @@ namespace AzureWebSitesDeployment
                     new TypeResolver(typeof(IdentityController), typeof(TestController)));
                 config.MapHttpAttributeRoutes();
 
-                app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
+                apiApp.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
                 {
                     Authority = "https://demo.identityserver.io",
                     ValidationMode = ValidationMode.ValidationEndpoint,
                     RequiredScopes = new[] { "api" },
 
                     DelayLoadMetadata = true
-                });
-
-                app.Use(async (ctx, next) =>
-                {
-                    Trace.WriteLine("claims diag MW");
-
-                    if (ctx.Authentication.User != null)
-                    {
-                        foreach (var claims in ctx.Authentication.User.Claims)
-                        {
-                            Trace.WriteLine(string.Format("{0}: {1}", claims.Type, claims.Value));
-                        }
-                    }
-
-                    await next();
                 });
 
                 apiApp.UseWebApi(config);
