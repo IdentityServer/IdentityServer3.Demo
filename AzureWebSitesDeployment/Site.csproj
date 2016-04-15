@@ -149,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\IdentityController.cs" />
+    <Compile Include="Api\TestController.cs" />
     <Compile Include="Api\TypeResolver.cs" />
     <Compile Include="Config\Cert.cs" />
     <Compile Include="Config\Clients.cs" />

@@ -7,7 +7,6 @@ using System.Web.Http;
 using System.Web.Http.Dispatcher;
 using AzureWebSitesDeployment.Api;
 using IdentityServer3.AccessTokenValidation;
-using System;
 using Microsoft.Owin.Security.Google;
 
 namespace AzureWebSitesDeployment
@@ -25,7 +24,7 @@ namespace AzureWebSitesDeployment
             {
                 var config = new HttpConfiguration();
                 config.Services.Replace(typeof(IHttpControllerTypeResolver),
-                    new TypeResolver(typeof(IdentityController)));
+                    new TypeResolver(typeof(IdentityController), typeof(TestController)));
                 config.MapHttpAttributeRoutes();
 
                 app.UseIdentityServerBearerTokenAuthentication(new IdentityServerBearerTokenAuthenticationOptions
