@@ -8,6 +8,7 @@ using System.Web.Http.Dispatcher;
 using AzureWebSitesDeployment.Api;
 using IdentityServer3.AccessTokenValidation;
 using Microsoft.Owin.Security.Google;
+using System.Diagnostics;
 
 namespace AzureWebSitesDeployment
 {
@@ -34,6 +35,21 @@ namespace AzureWebSitesDeployment
                     RequiredScopes = new[] { "api" },
 
                     DelayLoadMetadata = true
+                });
+
+                app.Use(async (ctx, next) =>
+                {
+                    Trace.WriteLine("claims diag MW");
+
+                    if (ctx.Authentication.User != null)
+                    {
+                        foreach (var claims in ctx.Authentication.User.Claims)
+                        {
+                            Trace.WriteLine(string.Format("{0}: {1}", claims.Type, claims.Value));
+                        }
+                    }
+
+                    await next();
                 });
 
                 apiApp.UseWebApi(config);

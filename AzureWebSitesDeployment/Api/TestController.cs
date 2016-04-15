@@ -6,6 +6,7 @@ namespace AzureWebSitesDeployment.Api
 {
     [Route("test")]
     [Authorize]
+    [HostAuthentication("Bearer")]
     public class TestController : ApiController
     {
         public IHttpActionResult Get()
