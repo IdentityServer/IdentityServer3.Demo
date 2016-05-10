@@ -53,6 +53,10 @@ namespace AzureWebSitesDeployment.Config
                     {
                         "https://someUri",
                     },
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret("secret".Sha256())
+                    },
 
                     AllowAccessToAllScopes = true
                 }
