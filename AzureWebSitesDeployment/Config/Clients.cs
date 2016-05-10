@@ -42,6 +42,20 @@ namespace AzureWebSitesDeployment.Config
 
                     AllowAccessToAllScopes = true
                 },
+                
+                new Client
+                {
+                    ClientName = "Hybrid Flow Client",
+                    ClientId = "hybrid",
+                    
+                    Flow = Flows.Hybrid,
+                    RedirectUris = new List<string>
+                    {
+                        "https://someUri",
+                    },
+
+                    AllowAccessToAllScopes = true
+                }
             };
         }
     }
