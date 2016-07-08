@@ -28,6 +28,25 @@ namespace AzureWebSitesDeployment.Config
 
                     AllowAccessToAllScopes = true
                 },
+                
+                new Client
+                {
+                    ClientName = "Native Client",
+                    ClientId = "native.code",
+
+                    Flow = Flows.AuthorizationCodeWithProofKey,
+                    RedirectUris = new List<string>
+                    {
+                        "https://someUri",
+                    },
+
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret("secret".Sha256())
+                    },
+
+                    AllowAccessToAllScopes = true
+                },
 
                 new Client
                 {
