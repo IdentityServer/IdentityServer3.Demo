@@ -47,6 +47,25 @@ namespace AzureWebSitesDeployment.Config
 
                     AllowAccessToAllScopes = true
                 },
+                
+                new Client
+                {
+                    ClientName = "Authorization Code Grant Client",
+                    ClientId = "code",
+
+                    Flow = Flows.AuthorizationCode,
+                    RedirectUris = new List<string>
+                    {
+                        "https://someUri",
+                    },
+
+                    ClientSecrets = new List<Secret>
+                    {
+                        new Secret("secret".Sha256())
+                    },
+
+                    AllowAccessToAllScopes = true
+                },
 
                 new Client
                 {
