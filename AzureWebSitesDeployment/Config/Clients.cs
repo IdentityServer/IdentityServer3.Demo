@@ -12,7 +12,7 @@ namespace AzureWebSitesDeployment.Config
             {
                 new Client
                 {
-                    ClientName = "Native Client",
+                    ClientName = "Native Client (Hyberid Flow with PKCE)",
                     ClientId = "native",
 
                     Flow = Flows.HybridWithProofKey,
@@ -31,7 +31,7 @@ namespace AzureWebSitesDeployment.Config
                 
                 new Client
                 {
-                    ClientName = "Native Client",
+                    ClientName = "Native Client (Code Flow with PKCE)",
                     ClientId = "native.code",
 
                     Flow = Flows.AuthorizationCodeWithProofKey,
@@ -50,7 +50,7 @@ namespace AzureWebSitesDeployment.Config
                 
                 new Client
                 {
-                    ClientName = "Authorization Code Grant Client",
+                    ClientName = "Authorization Code Client",
                     ClientId = "code",
 
                     Flow = Flows.AuthorizationCode,
