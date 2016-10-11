@@ -12,7 +12,7 @@ namespace AzureWebSitesDeployment.Config
             {
                 new Client
                 {
-                    ClientName = "Native Client (Hyberid Flow with PKCE)",
+                    ClientName = "Native Client (Hybrid Flow with PKCE)",
                     ClientId = "native",
 
                     Flow = Flows.HybridWithProofKey,
