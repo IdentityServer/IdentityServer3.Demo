@@ -97,7 +97,16 @@ namespace AzureWebSitesDeployment.Config
                     },
 
                     AllowAccessToAllScopes = true
-                }
+                },
+                
+                new Client
+                {
+                    ClientId = "client",
+                    ClientSecrets = { new Secret("secret".Sha256()) },
+
+                    Flow = Flows.ClientCredentials,
+                    AllowAccessToAllScopes = true
+                },
             };
         }
     }
