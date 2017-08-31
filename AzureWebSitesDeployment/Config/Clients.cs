@@ -77,6 +77,7 @@ namespace AzureWebSitesDeployment.Config
                     {
                         "https://someUri",
                     },
+                    LogoutUri = "http://localhost:5000/signout-idsrv",
 
                     AllowAccessToAllScopes = true
                 },
